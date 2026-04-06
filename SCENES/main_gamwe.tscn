@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdef7h0u66pmc"]
+
+[ext_resource type="Script" uid="uid://dnyxt31au58ow" path="res://SCRIPTS/main_gamwe.gd" id="1_785hc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_785hc"]
+
+[node name="MAIN GAMWE" type="Node2D"]
+script = ExtResource("1_785hc")
+metadata/_edit_vertical_guides_ = [0.0]
+metadata/_edit_horizontal_guides_ = [3.0]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 397)
+shape = SubResource("WorldBoundaryShape2D_785hc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 154)

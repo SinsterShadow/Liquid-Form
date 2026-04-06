@@ -1,0 +1,144 @@
+[gd_scene load_steps=7 format=3 uid="uid://bubedwyxph76s"]
+
+[ext_resource type="Script" uid="uid://cw4lb6uafva3q" path="res://SCENES/title.gd" id="1_d4psr"]
+[ext_resource type="Texture2D" uid="uid://c21160nchqpxu" path="res://assets/Liquid form assets/World tiles/Untitled869_20260322144127.PNG" id="1_o2n85"]
+[ext_resource type="AudioStream" uid="uid://blfqv8drnffoy" path="res://assets/Liquid form assets/Music/Liquid drops.mp3" id="3_34j58"]
+
+[sub_resource type="Animation" id="Animation_d4psr"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.053671997, 0.08766426, 0.5333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("liquid form:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.5119816),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("liquid form:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.53333336, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(18.892157, 18.892157, 18.892157, 1), Color(14.065733, 14.065733, 14.065733, 0), Color(14.065733, 14.065733, 14.065733, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_34j58"]
+resource_name = "title drops"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.053671997, 0.08766426, 0.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uefyr"]
+_data = {
+&"RESET": SubResource("Animation_d4psr"),
+&"title drops": SubResource("Animation_34j58")
+}
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_d4psr")
+
+[node name="background" type="Sprite2D" parent="."]
+scale = Vector2(2.01, 2.01)
+texture = ExtResource("1_o2n85")
+region_enabled = true
+region_rect = Rect2(321.021, 0, 958.979, 542.6667)
+
+[node name="liquid form" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_o2n85")
+region_enabled = true
+region_rect = Rect2(824, 568, 440, 112)
+
+[node name="circle" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_o2n85")
+region_enabled = true
+region_rect = Rect2(32, 24, 216, 216)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uefyr")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_34j58")
+
+[node name="Camera2D" type="Camera2D" parent="."]
